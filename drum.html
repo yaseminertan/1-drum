@@ -7,22 +7,27 @@
 </head>
 <body>
     <div id="keys" class="keys">
-        <div class="key">
+        <div class="key" data-key="97">
             <span>A</span>
             <span class="soundName">clap</span>
         </div>
-        <div class="key">
+        <div class="key" data-key="115">
             <span>S</span>
             <span class="soundName">hihat</span>
-        </div><div class="key">
+        </div>
+        <div class="key" data-key="100">
             <span>D</span>
             <span class="soundName">kick</span>
-        </div><div class="key">
+        </div>
+        <div class="key" data-key="102">
             <span>F</span>
             <span class="soundName">openhat</span>
         </div>
     </div>
-    <audio src="../sounds/clap.wav"></audio>
+    <audio src="../drum/sounds/clap.wav" data-key="97"></audio>
+    <audio src="../drum/sounds/hihat.wav" data-key="115"></audio>
+    <audio src="../drum/sounds/kick.wav" data-key="100"></audio>
+    <audio src="../drum/sounds/openhat.wav" data-key="102"></audio>
 </body>
 <style>
     .keys {
@@ -51,10 +56,18 @@
 </style>
 <script>
     window.addEventListener("keypress",keyPress);
-    let keys=  document.querySelector(".key");
+    const keys=  document.querySelector(".key");
     
     function keyPress(e){
         console.log(e.keyCode);
+        const myAudio=  document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        if(!myAudio) return;
+        const myKey=document.querySelector(`div[data-key="${e.keyCode}"]`);
+        myKey.classList.add("activated");
+        setTimeout(() => {myKey.classList.remove("activated");},200) 
+        myAudio.currentTime=0;
+        myAudio.play();
+        
     }
 </script>
 </html>

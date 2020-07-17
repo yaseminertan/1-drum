@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="keys" class="keys">
+        <div class="key">
+            <a>A</a>
+            <a class="soundName">CLAP</a>
+        </div>
+        <div class="key">
+            <a>B</a>
+            <a class="soundName">KICK</a>
+        </div><div class="key">
+            <a>C</a>
+            <a class="soundName">BOOM</a>
+        </div><div class="key">
+            <a>D</a>
+            <a class="soundName">RIDE</a>
+        </div>
+    </div>
+    <audio src=""></audio>
+</body>
+<style>
+    .keys {
+        align-items: center;
+        height: 100vh;
+        display: flex;
+        flex: 1;
+
+    }
+
+    .key {
+        font-size: large;
+        border:  3px solid #000;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        margin-left: 10px;
+    }
+    .soundName{
+       
+        font-size: x-small;
+    }
+    .activated{
+        border:  5px solid yellow;
+    }
+</style>
+<script>
+    window.addEventListener("keypress",keyPress);
+    let keys=  document.querySelector(".key");
+    
+    function keyPress(e){
+        console.log(e.keyCode);
+    }
+</script>
+</html>
